@@ -12,7 +12,7 @@ hours = [6, 5, 4;
 
 % (a) 각 공정에서 생산품 1의 한 단위를 만드는 데 드는 비용
 %     원소-대-원소 곱셈(.*) 사용
-hours_1 = hours(:,1)';                 % 생산품 1의 공정별 시간 [6, 2, 3, 4]
+hours_1 = [6, 2, 3, 4];                % 생산품 1의 공정별 시간
 process_cost_1 = hourly_cost .* hours_1
 
 % (b) 각 생산품의 한 단위를 만드는 데 드는 비용
@@ -20,6 +20,5 @@ process_cost_1 = hourly_cost .* hours_1
 unit_cost = hourly_cost * hours
 
 % (c) 생산품 1을 10단위, 2를 5단위, 3을 7단위 만들 때 전체 비용
-%     (1x3) * (3x1) = 스칼라
-units = [10, 5, 7];
-total_cost = units * unit_cost'
+%     행렬 곱셈(*) 사용: (1x3) * (3x1) = 스칼라
+total_cost = unit_cost * [10; 5; 7]
